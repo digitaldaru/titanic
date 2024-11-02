@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .submit:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            width: 320px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Titanic Survival Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="Pclass">Passenger Class:</label>
+        <select name="Pclass" id="Pclass" required>
+            <option value="1">1st Class</option>
+            <option value="2">2nd Class</option>
+            <option value="3">3rd Class</option>
+        </select>
+
+        <label for="Sex">Gender:</label>
+        <select name="Sex" id="Sex" required>
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+
+        <label for="Embarked">Embarked:</label>
+        <select name="Embarked" id="Embarked" required>
+            <option value="0">Southampton (S)</option>
+            <option value="1">Cherbourg (C)</option>
+            <option value="2">Queenstown (Q)</option>
+        </select>
+
+        <label for="Age">Age:</label>
+        <select name="Age" id="Age" required>
+            <option value="0-17">0-17 years</option>
+            <option value="18-32">18-32 years</option>
+            <option value="33-48">33-48 years</option>
+            <option value="49-64">49-64 years</option>
+            <option value="65-80">65-80 years</option>
+        </select>
+
+        <label for="Fare">Fare:</label>
+        <select name="Fare" id="Fare" required>
+            <option value="0-7">0-7 (Low)</option>
+            <option value="8-14">8-14 (Medium)</option>
+            <option value="15-42">15-42 (High)</option>
+            <option value="43+">43+ (Very High)</option>
+        </select>
+
+        <label for="Fam_type">Family Type:</label>
+        <select name="Fam_type" id="Fam_type" required>
+            <option value="0">Alone</option>
+            <option value="1">Small Family</option>
+            <option value="2">Large Family</option>
+        </select>
+
+        <label for="Title">Title:</label>
+        <select name="Title" id="Title" required>
+            <option value="0">Mr.</option>
+            <option value="1">Mrs.</option>
+            <option value="2">Miss</option>
+            <option value="3">Master</option>
+            <option value="4">Dr.</option>
+        </select>
+
+        <input type="submit" value="Predict" class="submit">
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+    {% endif %}
+
+</body>
+</html>
